@@ -1,0 +1,74 @@
+<% layout("/layouts/boilerplate") %>
+<div class="category">
+
+    <a href="/listings" class="category-item">
+        <i class="fa-solid fa-earth-americas"></i>
+        <span>All</span>
+    </a>
+
+    <a href="/listings?category=homes" class="category-item">
+        <i class="fa-solid fa-house"></i>
+        <span>Homes</span>
+    </a>
+
+    <a href="/listings?category=experiences" class="category-item">
+        <i class="fa-solid fa-earth-americas"></i>
+        <span>Experiences</span>
+    </a>
+
+    <a href="/listings?category=services" class="category-item">
+        <i class="fa-solid fa-bell-concierge"></i>
+        <span>Services</span>
+    </a>
+
+    <a href="/listings?category=popular-homes" class="category-item">
+        <i class="fa-solid fa-house-user"></i>
+        <span>Popular Homes</span>
+    </a>
+
+    <a href="/listings?category=trending" class="category-item">
+        <i class="fa-solid fa-fire"></i>
+        <span>Trending</span>
+    </a>
+
+    <a href="/listings?category=cold-places" class="category-item">
+        <i class="fa-solid fa-snowflake"></i>
+        <span>Cold Places</span>
+    </a>
+
+</div>
+<h3>All Listings</h3>
+
+<div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
+
+    <% for(let listing of alllistings) { %>
+
+        <div class="col mb-4">
+
+            <a href="/listings/<%= listing._id %>" class="listing-link">
+
+                <div class="card">
+
+                    <img
+                        src="<%= listing.image.url %>"
+                        class="card-img-top"
+                        alt="listing_image"
+                    >
+
+                    <div class="card-body">
+                        <p class="card-text">
+                            <b><%= listing.title %></b>
+                            <br>
+                           ₹ <%= listing.price ? listing.price.toLocaleString("en-IN") : "Price not available" %> / night
+                        </p>
+                    </div>
+
+                </div>
+
+            </a>
+
+        </div>
+
+    <% } %>
+
+</div>
